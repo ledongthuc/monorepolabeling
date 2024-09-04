@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Test monorepo labelling
     steps:
-      - uses: ./
+      - uses: ledongthuc/monorepolabeling@main
         id: labelchanges
         with:
           matching-patterns: |-
             /file/a/*:serviceA
             /file/b/*:serviceB
       - name: Print labels
-        run: echo "The time was ${{ steps.hello.labelchanges.labels }}"
+        run: echo "Service changes ${{ steps.hello.labelchanges.labels }}"

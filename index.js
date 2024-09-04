@@ -3,8 +3,11 @@ const github = require('@actions/github');
 
 try {
   // `who-to-greet` input defined in action metadata file
-  const nameToGreet = core.getInput('matching-patterns');
-  console.log(`patterns ${nameToGreet}!`);
+  const matchingPatterns = core.getInput('matching-patterns');
+  console.log(`INPUT: patterns: ${matchingPatterns}!`);
+
+  // const matchedLabels = matchingPatterns.
+
   const time = (new Date()).toTimeString();
   core.setOutput("labels", time);
   // Get the JSON webhook payload for the event that triggered the workflow
