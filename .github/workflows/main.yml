@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Test monorepo labelling
     steps:
-      - name: 
       - uses: ./
         id: labelchanges
         with:
