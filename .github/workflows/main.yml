@@ -1,0 +1,20 @@
+name: Pull request - Test
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  test-monorepo-labelling:
+    runs-on: ubuntu-latest
+    name: Test monorepo labelling
+    steps:
+      - name: 
+      - uses: ./
+        id: labelchanges
+        with:
+          matching-patterns: |-
+            /file/a/*:serviceA
+            /file/b/*:serviceB
+      - name: Print labels
+        run: echo "The time was ${{ steps.hello.labelchanges.labels }}"

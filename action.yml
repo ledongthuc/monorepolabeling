@@ -1,0 +1,17 @@
+name: 'Monorepo labelling'
+description: 'Detects pull requests files changes and add labels to the pull request. User can define file change patterns and map it to labels we want to add to.'
+inputs:
+  matching-patterns:
+    description: |-
+      Mapping between file changes pattern and label we want to add to github pull request. Examples:
+      /file/a/*:serviceA
+      /file/b/*:serviceB
+    required: true
+    default: ''
+outputs:
+  labels:
+    description: 'List of labels match with files changes'
+runs:
+  using: 'node20'
+  main: 'index.js'
+
