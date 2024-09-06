@@ -24,6 +24,7 @@ function matchPattern(matchingPatterns, fileChanges ,payload) {
     return { pattern, label }
   });
 
+  console.log(`DEBUG: fileChanges: ${fileChanges}`);
   if (!!!fileChanges) {
     return [];
   }
