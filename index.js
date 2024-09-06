@@ -23,11 +23,13 @@ function matchPattern(matchingPatterns, fileChanges ,payload) {
     const label = pairArr[1];
     return { pattern, label }
   });
-  console.log('DEBUG 1:', parsedMatchingPatterns);
-  console.log('DEBUG 1.1:', fileChanges);
+
+  if (!!!fileChanges) {
+    return [];
+  }
+
   let matchedLabels = fileChanges.map((filePath) => {
     const matchedPattern = parsedMatchingPatterns.find((matchingPattern) => {
-		console.log('DEBUG 1.1.1:', matchingPattern.pattern, filePath, minimatch(matchingPattern.pattern, filePath));
 		return minimatch(filePath, matchingPattern.pattern);
 	})
 	return matchedPattern
@@ -36,11 +38,10 @@ function matchPattern(matchingPatterns, fileChanges ,payload) {
   }).map((pattern) => {
 	  return pattern.label;
   })
-  console.log('DEBUG 2:', matchedLabels);
+
   matchedLabels = matchedLabels.filter(function(item, pos, self) {
       return self.indexOf(item) == pos;
   });
-  console.log('DEBUG 3:', matchedLabels);
   console.log(`OUTPUT: labels: ${matchedLabels}`);
   return matchedLabels
 }
