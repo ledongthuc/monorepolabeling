@@ -7,7 +7,7 @@ try {
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   const fileChanges = [];
 
-  const matchedLabels = matchPattern(matchingPatterns, payload)
+  const matchedLabels = matchPattern(matchingPatterns, fileChanges, payload)
 
   core.setOutput("labels", JSON.stringify(matchedLabels));
 } catch (error) {
