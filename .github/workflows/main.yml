@@ -1,8 +1,7 @@
 name: Pull request - Test
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened, ready_for_review]
+  pull_request
 
 jobs:
   test-monorepo-labelling:
@@ -17,7 +16,10 @@ jobs:
         with:
           file-changes: ${{ steps.changed-files.outputs.all_changed_files }}
           matching-patterns: |-
-            /file/a/*:serviceA
-            /file/b/*:serviceB
+            file/a/*:serviceA
+            file/b/*:serviceB
+      - name: Add labels to PR
+        uses: actions-ecosystem/action-add-labels@v1
+        labels: ${{ steps.labelchanges.outputs.labels }}
       - name: Print labels
-        run: echo "Service changes ${{ steps.hello.labelchanges.labels }}"
+        run: echo "Service changes ${{ steps.labelchanges.outputs.labels }}"
