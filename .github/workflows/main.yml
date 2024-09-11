@@ -9,9 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     name: Test monorepo labelling
     steps:
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
       - uses: ledongthuc/monorepolabeling@main
         id: labelchanges
         with:
+          file-changes: ${{ steps.changed-files.outputs.all_changed_files }}
           matching-patterns: |-
             /file/a/*:serviceA
             /file/b/*:serviceB
