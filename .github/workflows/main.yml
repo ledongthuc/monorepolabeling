@@ -16,7 +16,7 @@ jobs:
         with:
           file-changes: ${{ steps.changed-files.outputs.all_changed_files }}
           matching-patterns: |-
-            /file/a/*:serviceA
-            /file/b/*:serviceB
+            file/a/*:serviceA
+            file/b/*:serviceB
       - name: Print labels
         run: echo "Service changes ${{ steps.hello.labelchanges.labels }}"
