@@ -18,5 +18,8 @@ jobs:
           matching-patterns: |-
             file/a/*:serviceA
             file/b/*:serviceB
+      - name: Add labels to PR
+        uses: actions-ecosystem/action-add-labels@v1
+        labels: ${{ steps.labelchanges.outputs.labels }}
       - name: Print labels
         run: echo "Service changes ${{ steps.labelchanges.outputs.labels }}"
