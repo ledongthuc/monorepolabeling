@@ -19,4 +19,4 @@ jobs:
             file/a/*:serviceA
             file/b/*:serviceB
       - name: Print labels
-        run: echo "Service changes ${{ steps.hello.labelchanges.labels }}"
+        run: echo "Service changes ${{ steps.labelchanges.outputs.labels }}"
