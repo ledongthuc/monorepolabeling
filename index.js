@@ -5,7 +5,7 @@ const { minimatch } = require('minimatch');
 try {
   const matchingPatterns = core.getInput('matching-patterns');
   const payload = JSON.stringify(github.context.payload, undefined, 2)
-  const fileChanges = core.getInput('file-changes');
+  const fileChanges = core.getInput('file-changes').split(" ");
 
   const matchedLabels = matchPattern(matchingPatterns, fileChanges, payload)
 
